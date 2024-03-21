@@ -13,6 +13,7 @@ const useStorage = (file) => {
     // upload the file
     storageRef.put(file).on('state_changed', (snap) => {
       // update the progress as file uploads
+      console.log(snap)
     }, 
     (err) => {
       error.value = err
