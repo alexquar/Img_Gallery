@@ -4,18 +4,44 @@
       <input type="file" @change="handleChange">
       <span>Upload Image</span>
     </label>
+    <div class="output">
+        <div v-if="fileError" class="error">
+            {{ fileError }}
+        </div>
+        <div v-if="file" >
+            {{ file.name }}
+        </div>
+    </div>
 </form>
 </template>
 
 <script>
+import {ref} from 'vue'
     export default {
-        
+        setup(){
+            const types = ['image/png','image/jpeg']
+            const file = ref(null)
+            const fileError = ref(null)
+            const handleChange = (e) => {
+                let selected = e.target.files[0]
+                if(selected && types.includes(selected.type) ){
+                    file.value = selected
+                    fileError.value = null
+                } else {
+                    file.value = null
+                    fileError.value = "Upload an Image (png/jpeg)"
+                }
+            }
+
+
+            return {handleChange, fileError, file}
+        }
     }
 </script>
 
 <style scoped>
 
-  form{
+form{
     margin: 30px auto 10px;
     text-align: center;
   }
@@ -39,5 +65,12 @@
   label:hover{
     background: var(--primary);
     color: white;
+  }
+  .output{
+    height: 40px;
+    font-size: 0.8rem;
+  }
+  .error{
+    color: var(--error);
   }
 </style>
