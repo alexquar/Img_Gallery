@@ -1,5 +1,6 @@
 <template>
-    image grid goes here
+  <div>image grid goes here</div>
+    
   </template>
   
   <script>
