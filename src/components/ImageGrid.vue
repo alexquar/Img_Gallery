@@ -1,26 +1,34 @@
 <template>
-  <transition-group class="img-grid" appear tag="div" name="grid">
-    <div v-for="img in images" :key="img.id" class="img-wrap">
-      <img :src="img.url" alt="Post">
+  <transition-group tag="div" name="grid" appear class="img-grid">
+    <div 
+      v-for="img in documents" 
+      :key="img.id" 
+      class="img-wrap"
+      @click="handleClick(img.url)"
+    >
+      <img :src="img.url" />
     </div>
-</transition-group>
-  </template>
-  
-  <script>
-  import useCollection from '../composables/useCollection'
-  export default {
-  setup(){
-    const {documents: images, error} = useCollection('images')
+  </transition-group>
+</template>
 
+<script>
+import useCollection from '../composables/useCollection'
 
+export default {
+  setup(props, context) {
+    const { documents } = useCollection('images')
 
-    return {images, error}
+    const handleClick = (url) => {
+      context.emit('selected', url)
+    }
+
+    return { documents, handleClick }
   }
-  }
-  </script>
-  
-  <style scoped>
-   .img-grid{
+}
+</script>
+
+<style>
+  .img-grid{
     margin: 20px auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -30,6 +38,7 @@
     overflow: hidden;
     height: 0;
     padding: 50% 0;
+    /* padding controls height, will always be perfectly square regardless of width */
     position: relative;
     opacity: 0.8;
   }
@@ -41,16 +50,18 @@
     top: 0;
     left: 0;
   }
+
+  /* transitions */
   .grid-enter-from {
-    opacity: 0;
+    opacity: 0
   }
   .grid-enter-to {
     opacity: 1;
   }
   .grid-enter-active {
-    transition: all 2s ease;
+    transition: all 3s ease;
   }
   .grid-move {
     transition: all 0.5s ease;
   }
-  </style>
+</style>
