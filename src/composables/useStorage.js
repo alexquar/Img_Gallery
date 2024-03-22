@@ -1,5 +1,5 @@
 import { ref, watchEffect } from 'vue'
-import { projectStorage } from '../firebase/config'
+import { projectStorage } from '../firebase/config.js'
 
 const useStorage = (file) => {
   const error = ref(null)

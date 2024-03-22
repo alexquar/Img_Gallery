@@ -1,7 +1,8 @@
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/storage';
+import 'firebase/compat/firestore';
 
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/storage'
-import 'firebase/compat/firestore'
+
 
 
 const firebaseConfig = {
@@ -15,10 +16,10 @@ const firebaseConfig = {
   };
 
 
-firebase.initializeApp(firebaseConfig)
+  firebase.initializeApp(firebaseConfig)
 
-const projectStorage = firebase.storage()
-const projectFirestore = firebase.firestore()
-const timestamp = firebase.firestore.FieldValue.serverTimestamp
-
-export { projectStorage, projectFirestore, timestamp }
+  const projectStorage = firebase.storage()
+  const projectFirestore = firebase.firestore()
+  const timestamp = firebase.firestore.FieldValue.serverTimestamp
+  
+  export { projectStorage, projectFirestore, timestamp }
