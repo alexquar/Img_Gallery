@@ -4,8 +4,15 @@
   </template>
   
   <script>
+  import useCollection from '../composables/useCollection'
   export default {
-  
+  setup(){
+    const {documents, error} = useCollection('images')
+
+
+
+    return {documents, error}
+  }
   }
   </script>
   
