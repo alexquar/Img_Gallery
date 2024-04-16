@@ -6,7 +6,7 @@
           <label>
             <span>Image Caption:</span>
           </label>
-          <input type="text">
+          <input v-model="caption" type="text">
         </form>
   <div class="img-form">
     <form>
@@ -17,7 +17,7 @@
       <div class="output">
         <div v-if="fileError" class="error">{{ fileError }}</div>
         <div v-if="file">{{ file.name }}</div>
-        <ProgressBar v-if="file" :file="file" @complete="file = null" />
+        <ProgressBar v-if="file" :caption="caption" :file="file" @complete="file = null" />
       </div>
     </form>
   </div>
@@ -33,7 +33,7 @@
     setup() {
       const file = ref(null)
       const fileError = ref(null)
-  
+      const caption = ref('')
        // allowed file types
       const types = ['image/png', 'image/jpeg']
   
@@ -50,7 +50,7 @@
         }
       }
   
-      return { file, fileError, handleChange }
+      return { file, fileError, handleChange, caption }
     }
   }
   </script>
@@ -87,6 +87,7 @@
     }
     .error{
       color: var(--error);
+      font-size: 15px;
     }
     .caption-form{
     label{
