@@ -1,12 +1,20 @@
 <template>
-    <form @submit.prevent="handleSubmit">
+    <form @submit.prevent="handleSubmit" class="container-col">
       <h3>Sign up</h3>
+      <div>
       <input type="text" placeholder="Display name" v-model="displayName">
+    </div>
+    <div>
       <input type="email" placeholder="Email" v-model="email">
+    </div>
+    <div>
       <input type="password" placeholder="Password" v-model="password">
+    </div>
       <div v-if="error" class="error">{{ error }}</div>
-      <button v-if="!isPending">Sign up</button>
-      <button v-if="isPending" disabled>Loading</button>
+      <div>
+      <button class="btn" v-if="!isPending">Sign up</button>
+      <button class="btn" v-if="isPending" disabled>Loading</button>
+    </div>
     </form>
   </template>
   
@@ -34,3 +42,21 @@
     }
   }
   </script>
+
+  <style scoped>
+form{
+    margin-top: 40px;
+  }
+  form{
+    input{
+      border-radius: 15px;
+      border:none;
+      padding:10px;
+      color : #786d9a;
+    }
+    input:focus {
+  
+  outline-color: #786d9a;
+  }
+  }
+</style>
