@@ -2,7 +2,10 @@
   <div class="backdrop" @click="handleClick">
     <transition name="image" appear>
       <div>
-      <img :src="imgUrl" />
+        <img :src="imgUrl" />
+        <div class="container caption">
+      <p>{{ user }}</p>
+    </div>
     </div>
     </transition>
   </div>
@@ -10,7 +13,7 @@
 
 <script>
 export default {
-  props: ['imgUrl','user'],
+  props: ['imgUrl','user','id'],
   setup(props, context) {
     const handleClick = () => {
       context.emit('close', null)
@@ -35,6 +38,7 @@ export default {
     max-width: 60%;
     max-height: 80%;
     margin: 60px auto;
+    margin-bottom: 0px;
     box-shadow: 3px 5px 7px rgba(0,0,0,0.5);
     position: relative;
   }
@@ -48,5 +52,11 @@ export default {
   }
   .image-enter-active{
     transition: all ease-in-out 0.5s;
+  }
+  .caption{
+    max-width: 60%;
+    max-height: 80%;
+    color:red;
+    margin:auto;
   }
 </style>

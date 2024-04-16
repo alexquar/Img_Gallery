@@ -5,7 +5,8 @@
       <Modal
         v-if="selectedImgUrl" 
         :imgUrl="selectedImgUrl" 
-        :user="user"
+        :user="selectedUser"
+        :id="selectedId"
         @close="updateSelectedImgUrl" 
       />
     </div>
@@ -25,14 +26,15 @@
     },
     setup() {
       const selectedImgUrl = ref(null)
-      const user = ref(null)
-      const id = ref(null)
+      const selectedUser = ref(null)
+      const selectedId = ref(null)
       const updateSelectedImgUrl = (url, id, user) => {
         selectedImgUrl.value = url
-        user.value = user
+        selectedUser.value = user
+        selectedId.value=id
       }
   
-      return { selectedImgUrl, updateSelectedImgUrl, id, user }
+      return { selectedImgUrl, updateSelectedImgUrl, selectedId, selectedUser }
     }
   }
   </script>
