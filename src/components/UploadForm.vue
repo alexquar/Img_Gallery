@@ -45,7 +45,7 @@
   
   <style>
     form{
-      margin: 30px auto 10px;
+      margin: 20px auto 10px;
       text-align: center;
     }
     label input{

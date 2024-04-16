@@ -3,13 +3,13 @@
       <h1><router-link :to="{ name: 'HomeApp' }">img-u</router-link></h1>
       <p>Your easy to use image sharing platform!</p>
       <div>
-      <div>
-      <p> Hey </p>
-      <button class="btn" @click="handleSubmit"> Logout </button>
+      <div v-if="user" class="container">
+      <p> Hey, {{ user.displayName }}!</p>
+      <button class="btn" id="logout" @click="handleSubmit"> Logout </button>
     </div>
-    <div>
+    <div v-else class="container">
       <button class="btn"> <router-link :to="{ name: 'LoginApp' }">Login</router-link></button>
-      <button class="btn">  <router-link :to="{ name: 'SignupApp' }"> Signup</router-link> </button>
+      <button id="signup" class="btn">  <router-link :to="{ name: 'SignupApp' }"> Signup</router-link> </button>
     </div>
     </div>
     </div>
@@ -47,5 +47,16 @@
     .title p{
       text-align: center;
       color: #aaa;
+    }
+    .container{
+      display: flex;
+      justify-content: center;
+      align-items:center;
+    }
+    #logout{
+      margin-left: 20px;
+    }
+    #signup{
+      margin-left:20px;
     }
   </style>
