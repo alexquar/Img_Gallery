@@ -34,6 +34,9 @@
   </script>
   
   <style>
+  .title a{
+    text-decoration: none;
+  }
     .title h1{
       color: var(--error);
       font-size: 2rem;
