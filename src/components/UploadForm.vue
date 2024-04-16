@@ -17,7 +17,7 @@
       <div class="output">
         <div v-if="fileError" class="error">{{ fileError }}</div>
         <div v-if="file">{{ file.name }}</div>
-        <ProgressBar v-if="file" :caption="caption" :file="file" @complete="file = null" />
+        <ProgressBar v-if="file" :caption="caption" :file="file" @complete="file,caption = null, null" />
       </div>
     </form>
   </div>

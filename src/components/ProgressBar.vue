@@ -16,7 +16,7 @@
       const error = ref(null)
       if(props.caption){ //here, we will also have to modify use store
         error.value=null
-        const { progress } = useStorage(props.file) 
+        const { progress } = useStorage(props.file, props.caption) 
         watchEffect(() => {
         if (progress.value >= 100) {
           setTimeout(() => context.emit('complete'), 1000)

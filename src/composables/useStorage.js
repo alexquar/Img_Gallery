@@ -1,7 +1,7 @@
 import { ref, watchEffect } from 'vue'
 import { projectStorage, projectFirestore, timestamp } from '../firebase/config.js'
 import getUser from './getUser.js'
-const useStorage = (file) => {
+const useStorage = (file, caption) => {
   const error = ref(null)
   const url = ref(null)
   const progress = ref(null)
@@ -24,7 +24,7 @@ const useStorage = (file) => {
       const dlUrl = await storageRef.getDownloadURL()
       const createdAt = timestamp()
       console.log(user)
-      await collectionRef.add({url: dlUrl, createdAt, uid:user.value.uid, displayName:user.value.displayName})
+      await collectionRef.add({url: dlUrl, createdAt, uid:user.value.uid, displayName:user.value.displayName, caption})
       url.value = dlUrl
     })
   })
