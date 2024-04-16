@@ -113,6 +113,7 @@
       }
     .title{
       text-align: center;
+      color:#786d9a;
     }
     .container{
       display: flex;
