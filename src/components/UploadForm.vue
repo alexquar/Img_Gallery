@@ -93,7 +93,7 @@
       display: block;
       width: 150px;
       height: 30px;
-      border: 1px solid var(--primary);
+     
       border-radius: 6px;
       margin: 10px;
       line-height: 30px;
@@ -103,7 +103,7 @@
       }
     input{
       border-radius: 15px;
-      border:none;
+      border: 1px solid var(--primary);
       padding:10px;
       color : #786d9a;
     }
@@ -111,5 +111,12 @@
       outline-color: #786d9a;
     }
       }
-    
+    .title{
+      text-align: center;
+    }
+    .container{
+      display: flex;
+      justify-content: center;
+      align-items:center;
+    }
   </style>

@@ -33,7 +33,11 @@
   }
   </script>
   
-  <style>
+  <style scoped>
+  .title{
+    border-bottom:solid;
+    border-color:red;
+  }
   .title a{
     text-decoration: none;
   }
