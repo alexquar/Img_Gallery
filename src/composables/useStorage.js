@@ -24,7 +24,7 @@ const useStorage = (file) => {
       const dlUrl = await storageRef.getDownloadURL()
       const createdAt = timestamp()
       console.log(user)
-      await collectionRef.add({url: dlUrl, createdAt, uid:user.value.uid})
+      await collectionRef.add({url: dlUrl, createdAt, uid:user.value.uid, displayName:user.value.displayName})
       url.value = dlUrl
     })
   })

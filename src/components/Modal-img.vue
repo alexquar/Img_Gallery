@@ -1,14 +1,16 @@
 <template>
   <div class="backdrop" @click="handleClick">
     <transition name="image" appear>
+      <div>
       <img :src="imgUrl" />
+    </div>
     </transition>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['imgUrl'],
+  props: ['imgUrl','user'],
   setup(props, context) {
     const handleClick = () => {
       context.emit('close', null)
