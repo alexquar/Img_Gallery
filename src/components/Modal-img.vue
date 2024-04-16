@@ -40,6 +40,7 @@ export default {
     max-height: 80%;
     margin: 60px auto;
     margin-bottom: 0px;
+    margin-top:30px;
     box-shadow: 3px 5px 7px rgba(0,0,0,0.5);
     position: relative;
   }

@@ -8,6 +8,7 @@
   
   export default {
     props: ['file'],
+    //add the prop for caption here when you try to start the upload check for a caption and emit an error if there isnt one
     setup(props, context) {
       const { progress } = useStorage(props.file) 
   
