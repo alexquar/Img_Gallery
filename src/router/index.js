@@ -8,9 +8,18 @@ import { projectAuth } from '../firebase/config';
 const requireAuth = (to, from, next) => {
   let user = projectAuth.currentUser
   if (!user) {
-    next({ name: 'Login' })
+    next({ name: 'LoginApp' })
   } else {
     next()
+  }
+}
+
+const noAuth = (to, from, next) => {
+  let user = projectAuth.currentUser
+  if (!user) {
+    next()
+  } else {
+    next({name:'HomeApp'})
   }
 }
 const routes = [
@@ -24,11 +33,13 @@ const routes = [
     path: '/login',
     name: 'LoginApp',
     component: LoginApp,
+    beforeEnter : noAuth
   },
   {
     path: '/signup',
     name: 'SignupApp',
     component: SignupApp,
+    beforeEnter : noAuth
   },
 ]
 
