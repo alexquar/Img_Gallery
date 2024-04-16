@@ -3,8 +3,9 @@
     <transition name="image" appear>
       <div>
         <img :src="imgUrl" />
-        <div class="container caption">
-      <p>{{ user }}</p>
+        <div class=" caption">
+      <h3>Posted by: {{ user }}</h3>
+      <p>Caption: Placeholder for the caption</p>
     </div>
     </div>
     </transition>
@@ -56,7 +57,17 @@ export default {
   .caption{
     max-width: 60%;
     max-height: 80%;
-    color:red;
+    color:#786d9a;
     margin:auto;
+    background: #f5f5f8;
+    margin-top: 10px;
+    box-shadow: 3px 5px 7px rgba(0,0,0,0.5);
+    display: flex;
+      justify-content: space-between;
+      align-items:center;
+    p, h3{
+      margin-left: 10px;
+      margin-right:10px;
+    }
   }
 </style>
