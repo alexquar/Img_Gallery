@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeApp from '../views/HomeApp.vue'
 import LoginApp from '../views/LoginApp.vue'
 import SignupApp from '../views/SignupApp.vue'
-
+import SearchApp from '@/views/SearchApp.vue'
 import { projectAuth } from '../firebase/config';
 
 const requireAuth = (to, from, next) => {
@@ -27,6 +27,12 @@ const routes = [
     path: '/',
     name: 'HomeApp',
     component: HomeApp,
+    beforeEnter : requireAuth
+  },
+  {
+    path: '/search',
+    name: 'SearchApp',
+    component: SearchApp,
     beforeEnter : requireAuth
   },
   {
