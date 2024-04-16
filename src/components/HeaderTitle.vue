@@ -1,6 +1,6 @@
 <template>
     <div class="title">
-      <h1><router-link :to="{ name: 'HomeApp' }">img-u</router-link></h1>
+      <h1><router-link :to="{ name: 'HomeApp' }">U Img</router-link></h1>
       <p>Your easy to use image sharing platform!</p>
       <div>
       <div v-if="user" class="container">
