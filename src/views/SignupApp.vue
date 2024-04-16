@@ -23,17 +23,20 @@
   import useSignup from '@/composables/useSignup'
   import { ref } from 'vue'
   import {useRouter} from 'vue-router'
+  import addDocument from '@/composables/addDocument'
   export default {
     setup() {
       const { error, signup, isPending } = useSignup()
       const router = useRouter()
       const email = ref('')
+      const {addDoc}=addDocument('users')
       const password = ref('')
       const displayName = ref('')
   
       const handleSubmit = async () => {
         const res = await signup(email.value, password.value, displayName.value)
         if (!error.value) {
+          addDoc({email:email.value, displayName:displayName.value})
           router.push( { name : 'HomeApp'})
         }
       }

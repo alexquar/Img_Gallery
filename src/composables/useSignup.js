@@ -19,7 +19,7 @@ const signup = async (email, password, displayName) => {
     console.log(err.message)
     error.value = err.message
     if(err.message == "Firebase: Password should be at least 6 characters (auth/weak-password)."){
-      error.value = "Please choose a stronger passsword!"
+      error.value = "Please choose a stronger passsword"
     }
     isPending.value = false
   }

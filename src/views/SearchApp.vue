@@ -34,6 +34,8 @@
   }
   </script>
   <style scoped>
+  @import "vue-select/dist/vue-select.css";
+
   .App{
     padding-left:20px;
     padding-right: 20px;
