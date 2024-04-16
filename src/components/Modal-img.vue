@@ -5,7 +5,7 @@
         <img :src="imgUrl" />
         <div class=" caption">
       <h3>Posted by: {{ user }}</h3>
-      <p>Caption: Placeholder for the caption</p>
+      <p>Caption: {{caption}}</p>
     </div>
     </div>
     </transition>
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  props: ['imgUrl','user','id'],
+  props: ['imgUrl','user','id', "caption"],
   setup(props, context) {
     const handleClick = () => {
       context.emit('close', null)

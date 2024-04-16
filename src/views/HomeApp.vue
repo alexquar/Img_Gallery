@@ -7,6 +7,7 @@
         :imgUrl="selectedImgUrl" 
         :user="selectedUser"
         :id="selectedId"
+        :caption="selectedCaption"
         @close="updateSelectedImgUrl" 
       />
     </div>
@@ -28,13 +29,15 @@
       const selectedImgUrl = ref(null)
       const selectedUser = ref(null)
       const selectedId = ref(null)
-      const updateSelectedImgUrl = (url, id, user) => {
+      const selectedCaption=ref(null)
+      const updateSelectedImgUrl = (url, id, user, caption) => {
         selectedImgUrl.value = url
         selectedUser.value = user
         selectedId.value=id
+        selectedCaption.value=caption
       }
   
-      return { selectedImgUrl, updateSelectedImgUrl, selectedId, selectedUser }
+      return { selectedImgUrl, updateSelectedImgUrl, selectedId, selectedUser, selectedCaption }
     }
   }
   </script>
