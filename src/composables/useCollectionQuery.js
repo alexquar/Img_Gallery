@@ -14,8 +14,9 @@ const useCollectionQuery = (collection, _query, _orderBy) => {
     snap.docs.forEach(doc => {
       results.push({...doc.data(), id: doc.id})
     })
-
+    console.log(results)
     documents.value = results
+    console.log('got the docs')
     error.value = null
   }, err => {
     console.log(err.message)
