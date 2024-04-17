@@ -14,14 +14,18 @@ const useCollectionQuery = (collection, _query, _orderBy) => {
     snap.docs.forEach(doc => {
       results.push({...doc.data(), id: doc.id})
     })
-    console.log(results)
+    if(results.length){
     documents.value = results
     console.log('got the docs')
     error.value = null
+    } else {
+        documents.value = null
+        error.value = 'No Posts Available!'
+    }
   }, err => {
     console.log(err.message)
     documents.value = null
-    error.value = 'could not fetch the data'
+    error.value = 'Could not fetch the data'
   })
 
   watchEffect((onInvalidate) => {

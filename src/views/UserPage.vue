@@ -10,6 +10,7 @@
         @close="updateSelectedImgUrl" 
       />
       <div v-if="error" class="error">{{ error }}</div>
+      <div v-if="imageErr" class="error">{{ imageErr }}</div>
     </div>
 </template>
 
@@ -25,8 +26,8 @@ export default {
     },
     props: ['id'],
     setup (props) {
+        const imageErr = ref(null)
         const {documents, error} = useCollectionQuery('images', ['uid','==',props.id], ['createdAt', 'asc'])
-        console.log(documents)
     const selectedImgUrl = ref(null)
       const selectedUser = ref(null)
       const selectedId = ref(null)
@@ -38,7 +39,7 @@ export default {
         selectedCaption.value=caption
       }
   
-      return { selectedImgUrl, updateSelectedImgUrl, selectedId, selectedUser, selectedCaption, documents, error  }
+      return { selectedImgUrl, updateSelectedImgUrl, selectedId, selectedUser, selectedCaption, documents, error, imageErr  }
     }
 }
 </script>
