@@ -18,7 +18,6 @@ const useCollection = (collection) => {
     // update values
     documents.value = results
     error.value = null
-    console.log(documents.value)
   }, err => {
     console.log(err.message)
     documents.value = null

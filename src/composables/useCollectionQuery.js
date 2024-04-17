@@ -16,7 +16,6 @@ const useCollectionQuery = (collection, _query, _orderBy) => {
     })
     if(results.length){
     documents.value = results
-    console.log('got the docs')
     error.value = null
     } else {
         documents.value = null
