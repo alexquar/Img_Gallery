@@ -19,6 +19,7 @@ import ImageGrid from '../components/ImageGrid.vue'
 import Modal from '../components/Modal-img.vue'
 import useCollectionQuery from "../composables/useCollectionQuery"
 import { ref } from 'vue'
+import useCollection from '@/composables/useCollection'
 export default {
     components: {
       ImageGrid,
@@ -26,6 +27,7 @@ export default {
     },
     props: ['id'],
     setup (props) {
+        
         const imageErr = ref(null)
         const {documents, error} = useCollectionQuery('images', ['uid','==',props.id], ['createdAt', 'asc'])
     const selectedImgUrl = ref(null)
