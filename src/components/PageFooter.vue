@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <button class="btn-outline">
-            <router-link :to="{ name: 'SignupApp' }"> About</router-link>
+            <router-link :to="{ name: 'AboutApp' }"> About</router-link>
         </button>
         <button class="btn-outline">
             <router-link :to="{ name: 'SearchApp' }"> Search</router-link>
