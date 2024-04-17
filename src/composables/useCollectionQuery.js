@@ -1,11 +1,11 @@
 import { ref, watchEffect } from 'vue'
 import { projectFirestore } from "../firebase/config"
 
-export const useCollection = (collection, _query, _orderBy) => {
+const useCollectionQuery = (collection, _query, _orderBy) => {
     const documents = ref(null)
     const error = ref(null)
-  const query = _query.current
-  const orderBy = _orderBy.current
+  const query = _query
+  const orderBy = _orderBy
   let collectionRef = projectFirestore.collection(collection)
       collectionRef= collectionRef.where(...query)
       collectionRef= collectionRef.orderBy(...orderBy)
@@ -29,3 +29,5 @@ export const useCollection = (collection, _query, _orderBy) => {
 
   return { documents, error }
 }
+
+export default useCollectionQuery
