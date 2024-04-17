@@ -2,13 +2,13 @@
     <form @submit.prevent="handleSubmit" class="container-col">
       <h3>Sign up</h3>
       <div>
-      <input type="text" placeholder="Display name" v-model="displayName">
+      <input type="text" required placeholder="Display name" v-model="displayName">
     </div>
     <div>
-      <input type="email" placeholder="Email" v-model="email">
+      <input type="email" required placeholder="Email" v-model="email">
     </div>
     <div>
-      <input type="password" placeholder="Password" v-model="password">
+      <input type="password" required placeholder="Password" v-model="password">
     </div>
       <div v-if="error" class="error">{{ error }}</div>
       <div>

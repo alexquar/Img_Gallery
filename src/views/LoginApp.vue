@@ -2,10 +2,10 @@
     <form @submit.prevent="handleSubmit" class="container-col">
       <h3>Login</h3>
       <div>
-      <input type="email" placeholder="Email" v-model="email">
+      <input required type="email" placeholder="Email" v-model="email">
     </div>
     <div>
-      <input type="password" placeholder="Password" v-model="password">
+      <input required type="password" placeholder="Password" v-model="password">
     </div>
       <div v-if="error" class="error">{{ error }}</div>
       <div>
