@@ -1,18 +1,19 @@
 <template>
-    <div>
+    <div class="container">
         <button class="btn-outline">
-            About
+            <router-link :to="{ name: 'SignupApp' }"> About</router-link>
         </button>
         <button class="btn-outline">
-            Search
+            <router-link :to="{ name: 'SearchApp' }"> Search</router-link>
         </button>
         <button class="btn-outline">
-            Home
+            <router-link :to="{ name: 'HomeApp' }"> Home</router-link>
         </button>
     </div>
 </template>
 
 <script>
+
 export default {
     setup () {
         
@@ -22,6 +23,6 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style  scoped>
 
 </style>
