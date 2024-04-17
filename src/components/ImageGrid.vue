@@ -12,17 +12,15 @@
 </template>
 
 <script>
-import useCollection from '../composables/useCollection'
-
 export default {
+  props: ['documents'],
   setup(props, context) {
-    const { documents } = useCollection('images')
 
     const handleClick = (url, id, user, caption) => {
       context.emit('selected', url, id, user, caption)
     }
 
-    return { documents, handleClick }
+    return {handleClick }
   }
 }
 </script>
