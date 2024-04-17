@@ -36,7 +36,7 @@
       const handleSubmit = async () => {
         const res = await signup(email.value, password.value, displayName.value)
         if (!error.value) {
-          addDoc({email:email.value, displayName:displayName.value, id:id.value})
+          addDoc({ displayName:displayName.value, id:id.value})
           router.push( { name : 'HomeApp'})
         }
       }

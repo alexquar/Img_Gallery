@@ -1,9 +1,10 @@
 <template>
-    <div class="App">
+    <div v-if="documents" class="App">
       <h1 class="title">Search Users</h1>
       <div class="container">
     <form>
-      <v-select :options="countries" placeholder="Search..." label="country"></v-select>
+      {{ documents }}
+      <v-select :options="documents.id" placeholder="Search..." label="country"></v-select>
     </form>
   </div>
   <p class="body">This page offers a search of all users who have created an account with U Img. The search is performed by user display name and displayed alphabetically.
@@ -13,22 +14,16 @@
   
   <script>
   import { ref } from 'vue'
-  
+  import useCollection from '@/composables/useCollection';
   export default {
     components: {
     
     },
     setup() {
-  
+      const {documents, error} = useCollection('users')
       return {
-        countries: [
-      { country: "Spain" },
-      { country: "France" },
-      { country: "Ghana" },
-      { country: "Nigeria" },
-      { country: "Brazil" },
-      { country: "Ecuador" },
-    ],
+        error,
+        documents
        }
     }
   }
