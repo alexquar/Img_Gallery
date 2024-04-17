@@ -25,7 +25,7 @@
       const { logout } = useLogout()
        const handleSubmit = async () => {
         await logout()
-        router.push({name:'Login'})
+        router.push({name:'LoginApp'})
         }
         const {user} = getUser()
         return { handleSubmit, user}
