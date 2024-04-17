@@ -5,6 +5,7 @@ import SignupApp from '../views/SignupApp.vue'
 import SearchApp from '@/views/SearchApp.vue'
 import { projectAuth } from '../firebase/config';
 import AboutApp from '../views/AboutApp.vue'
+import UserPage from '../views/UserPage.vue'
 const requireAuth = (to, from, next) => {
   let user = projectAuth.currentUser
   if (!user) {
@@ -27,6 +28,12 @@ const routes = [
     path: '/',
     name: 'HomeApp',
     component: HomeApp,
+    beforeEnter : requireAuth
+  },{
+    path: '/user/:id',
+    name: 'UserPage',
+    component: UserPage,
+    props: true,
     beforeEnter : requireAuth
   },
   {
