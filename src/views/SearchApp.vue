@@ -3,8 +3,7 @@
       <h1 class="title">Search Users</h1>
       <div class="container">
     <form>
-      {{ documents }}
-      <v-select :options="documents.id" placeholder="Search..." label="country"></v-select>
+      <v-select :options="documents.map(obj => obj.displayName)" placeholder="Search..." label="country"></v-select>
     </form>
   </div>
   <p class="body">This page offers a search of all users who have created an account with U Img. The search is performed by user display name and displayed alphabetically.
@@ -20,9 +19,11 @@
     },
     setup() {
       const {documents, error} = useCollection('users')
+      
       return {
         error,
-        documents
+        documents,
+      
        }
     }
   }
