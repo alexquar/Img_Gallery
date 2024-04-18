@@ -2,8 +2,12 @@
     <div v-if="documents" class="App">
       <h1 class="title">Search Users</h1>
       <div class="container">
-    <form>
-      <v-select :options="documents.map(obj => obj.displayName)" placeholder="Search..." label="country"></v-select>
+    <form @submit="handleSubmit">
+      <div>
+      <v-select :options="documents.map(obj => obj.displayName)" placeholder="Search..." v-model="user" label="country"></v-select>
+      <button class="btn">View User</button>
+    </div>
+    <div class="error">{{ error }}</div>
     </form>
   </div>
   <p class="body">This page offers a search of all users who have created an account with U Img. The search is performed by user display name and displayed alphabetically.
@@ -13,17 +17,33 @@
   
   <script>
   import useCollection from '@/composables/useCollection';
+  import useCollectionQuery from '@/composables/useCollectionQuery';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
   export default {
     components: {
     
     },
     setup() {
+      const user  = ref('')
       const {documents, error} = useCollection('users')
-      
+      const router = useRouter()
+      const handleSubmit =  (e) => {
+        e.preventDefault()
+        if(user.value){
+        const {documents, error:err} =  useCollectionQuery('users', ['displayName','==',user.value], ['createdAt', 'asc'])
+        setTimeout(()=>{
+          const person = documents.value[0]
+       console.log(person)
+       router.push({ name: 'UserPage', params: { id: person.id } })
+        }, 100)
+        }
+      }
       return {
         error,
         documents,
-      
+        handleSubmit,
+        user,
        }
     }
   }

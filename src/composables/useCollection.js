@@ -27,7 +27,6 @@ const useCollection = (collection) => {
   watchEffect((onInvalidate) => {
     onInvalidate(() => unsub());
   })
-console.log(documents)
   return { error, documents }
 
 }
