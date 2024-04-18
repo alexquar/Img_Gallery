@@ -13,7 +13,6 @@
   </template>
   
   <script>
-  import { ref } from 'vue'
   import useCollection from '@/composables/useCollection';
   export default {
     components: {

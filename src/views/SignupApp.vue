@@ -24,6 +24,7 @@
   import { ref } from 'vue'
   import {useRouter} from 'vue-router'
   import addDocument from '@/composables/addDocument'
+  import { timestamp } from '@/firebase/config'
   export default {
     setup() {
       const { error, signup, isPending, id } = useSignup()
@@ -36,7 +37,8 @@
       const handleSubmit = async () => {
         const res = await signup(email.value, password.value, displayName.value)
         if (!error.value) {
-          addDoc({ displayName:displayName.value, id:id.value})
+          const createdAt = timestamp()
+          addDoc({ displayName:displayName.value, createdAt, id:id.value})
           router.push( { name : 'HomeApp'})
         }
       }
