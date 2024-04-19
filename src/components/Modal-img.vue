@@ -11,7 +11,8 @@
     <Teleport to='#modal'>
     <div class='delete'>
     <div v-if="person.uid == id" class="container">
-    <button class="btn">Delete Post</button>
+    <button v-if="!isPending" @click="handleDelete" class="btn">Delete Post</button>
+    <button v-else disabled class="btn">Deleting...</button>
   </div>
 </div>
 </Teleport>
@@ -21,16 +22,26 @@
 </template>
 
 <script>
+import useEditStorage from '@/composables/useEditStorage'
+import useDocument from '@/composables/useDocument'
 import { formatDistanceToNow } from 'date-fns'
 import getUser from '@/composables/getUser'
 export default {
-  props: ['imgUrl','user','id', "caption", 'date'],
+  props: ['imgUrl','user','id', "caption", 'date', 'docId'],
   setup(props, context) {
     const {user:person} = getUser()
+  
+  const  {isPending, deleteDoc} = useDocument('images', props.docId)
+  const {deleteImage} = useEditStorage()
     const handleClick = () => {
       context.emit('close', null)
     }
-    return { handleClick, formatDistanceToNow, person }
+  const handleDelete = () => {
+    deleteDoc()
+    deleteImage(props.imgUrl)
+    
+  }
+    return { handleClick, formatDistanceToNow, person, handleDelete, isPending}
   }
 }
 </script>
@@ -50,7 +61,7 @@ export default {
     max-height: 80%;
     margin: 60px auto;
     margin-bottom: 0px;
-    margin-top:5vh;
+    margin-top:5dvh;
     box-shadow: 3px 5px 7px rgba(0,0,0,0.5);
     position: relative;
   }

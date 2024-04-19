@@ -2,9 +2,8 @@ import { projectStorage } from '../firebase/config'
 import { ref } from "vue"
 
 
-const useStorage = () => {
+const useEditStorage = () => {
   const error = ref(null)
-  const filePath = ref(null)
 
 
   const deleteImage = async (path) => {
@@ -21,7 +20,7 @@ const useStorage = () => {
   }
 
 
-  return { filePath, error, deleteImage }
+  return { error, deleteImage }
 }
 
-export default useStorage;
+export default useEditStorage;
