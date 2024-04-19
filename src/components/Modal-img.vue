@@ -5,7 +5,8 @@
         <img :src="imgUrl" />
         <div class=" caption">
       <h3>Posted by: {{ user }}</h3>
-      <p>Caption: {{caption}}</p>
+      <h3>Caption: {{caption}}</h3>
+      <h3 v-if="date">Posted: {{ formatDistanceToNow(date.toDate())}}</h3>
     </div>
     </div>
     </transition>
@@ -13,14 +14,14 @@
 </template>
 
 <script>
+import { formatDistanceToNow } from 'date-fns'
 export default {
-  props: ['imgUrl','user','id', "caption"],
+  props: ['imgUrl','user','id', "caption", 'date'],
   setup(props, context) {
     const handleClick = () => {
       context.emit('close', null)
     }
-
-    return { handleClick }
+    return { handleClick, formatDistanceToNow }
   }
 }
 </script>

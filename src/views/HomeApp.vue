@@ -8,6 +8,7 @@
         :user="selectedUser"
         :id="selectedId"
         :caption="selectedCaption"
+        :date = "selectedDate"
         @close="updateSelectedImgUrl" 
       />
     </div>
@@ -29,16 +30,18 @@
       const selectedImgUrl = ref(null)
       const selectedUser = ref(null)
       const selectedId = ref(null)
+      const selectedDate = ref(null)
       const selectedCaption=ref(null)
       const {documents, error } = useCollection('images')
-      const updateSelectedImgUrl = (url, id, user, caption) => {
+      const updateSelectedImgUrl = (url, id, user, caption, date) => {
         selectedImgUrl.value = url
         selectedUser.value = user
         selectedId.value=id
+        selectedDate.value = date
         selectedCaption.value=caption
       }
   
-      return { selectedImgUrl, updateSelectedImgUrl, selectedId, selectedUser, selectedCaption, documents, error  }
+      return { selectedImgUrl, updateSelectedImgUrl, selectedId, selectedUser, selectedCaption, selectedDate, documents, error  }
     }
   }
   </script>
