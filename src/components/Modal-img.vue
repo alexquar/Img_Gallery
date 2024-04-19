@@ -8,9 +8,13 @@
       <h3>Caption: {{caption}}</h3>
       <h3 v-if="date">Posted: {{ formatDistanceToNow(date.toDate())}}</h3>
     </div>
+    <Teleport to='#modal'>
+    <div class='delete'>
     <div v-if="person.uid == id" class="container">
     <button class="btn">Delete Post</button>
   </div>
+</div>
+</Teleport>
     </div>
     </transition>
   </div>
@@ -46,7 +50,7 @@ export default {
     max-height: 80%;
     margin: 60px auto;
     margin-bottom: 0px;
-    margin-top:30px;
+    margin-top:5vh;
     box-shadow: 3px 5px 7px rgba(0,0,0,0.5);
     position: relative;
   }
@@ -80,5 +84,9 @@ export default {
   }
   button{
     box-shadow: 3px 5px 7px rgba(0,0,0,0.5);
+  }
+  .delete{
+    position:relative;
+  z-index: 999;
   }
 </style>
