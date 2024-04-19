@@ -1,7 +1,7 @@
 <template>
     <div  class="App">
-      <div v-if="document">
-      <h1 class="title">{{ document.displayName }}'s Pictures</h1>
+      <div v-if="userdoc && userdoc[0]">
+      <h1 class="title">{{ userdoc[0].displayName }}'s Pictures</h1>
       <ImageGrid @selected="updateSelectedImgUrl"  :documents="documents"/>
       <Modal
         v-if="selectedImgUrl" 
@@ -25,7 +25,6 @@ import ImageGrid from '../components/ImageGrid.vue'
 import Modal from '../components/Modal-img.vue'
 import useCollectionQuery from "../composables/useCollectionQuery"
 import { ref } from 'vue'
-import getDocument from '@/composables/getDocument'
 export default {
     components: {
       ImageGrid,
@@ -33,9 +32,7 @@ export default {
     },
     props: ['id'],
     setup (props) {
-        const {error:err, document} = getDocument('users', props.id)
-        setTimeout(()=> console.log(document.id), 1000)
-      //no longer displaying stuf :((()))
+        const {documents:userdoc, error:err} =  useCollectionQuery('users', ['uid','==',props.id], ['createdAt', 'asc'])
         const imageErr = ref(null)
         const {documents, error} = useCollectionQuery('images', ['uid','==',props.id], ['createdAt', 'asc'])
     const selectedImgUrl = ref(null)
@@ -48,7 +45,7 @@ export default {
         selectedId.value=id
         selectedCaption.value=caption
       }
-      return { selectedImgUrl, updateSelectedImgUrl, selectedId, selectedUser, selectedCaption, documents, error, imageErr, document }
+      return { selectedImgUrl, updateSelectedImgUrl, selectedId, selectedUser, selectedCaption, documents, error, imageErr, userdoc }
     }
 }
 </script>

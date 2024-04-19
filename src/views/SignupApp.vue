@@ -38,7 +38,7 @@
         const res = await signup(email.value, password.value, displayName.value)
         if (!error.value) {
           const createdAt = timestamp()
-          addDoc({ displayName:displayName.value, createdAt, id:id.value})
+          addDoc({ displayName:displayName.value, createdAt, uid:id.value})
           router.push( { name : 'HomeApp'})
         }
       }

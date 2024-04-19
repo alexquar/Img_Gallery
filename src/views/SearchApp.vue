@@ -34,8 +34,8 @@ import { useRouter } from 'vue-router';
         const {documents, error:err} =  useCollectionQuery('users', ['displayName','==',user.value], ['createdAt', 'asc'])
         setTimeout(()=>{
           const person = documents.value[0]
-          console.log(person)
-       router.push({ name: 'UserPage', params: { id: person.id } })
+          console.log(person.uid)
+       router.push({ name: 'UserPage', params: { id: person.uid } })
         }, 100)
         }
       }
