@@ -2,10 +2,12 @@
     <div v-if="documents" class="App">
       <h1 class="title">Search Users</h1>
       <div class="container">
-    <form @submit="handleSubmit">
+    <form class="search-form" @submit="handleSubmit">
       <div>
       <v-select :options="documents.map(obj => obj.displayName)" placeholder="Search..." v-model="user" label="country"></v-select>
+      <div class="container">
       <button class="btn">View User</button>
+    </div>
     </div>
     <div class="error">{{ error }}</div>
     </form>
@@ -81,5 +83,10 @@ import { useRouter } from 'vue-router';
   text-align: center;
   margin:auto;
   margin-top:50px;
+}
+.search-form{
+  button{
+    margin-top: 20px;
+  }
 }
 </style>
