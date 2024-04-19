@@ -49,21 +49,20 @@
   </script>
 
   <style scoped>
-form{
+  form{
     margin-top: 40px;
   }
-  form{
-    input{
+  form input{
       border-radius: 15px;
       border:none;
       padding:10px;
       color : #786d9a;
     }
-    input:focus {
+  form input:focus {
   
   outline-color: #786d9a;
   }
-  }
+  
   .subtitle{
  color: #786d9a;
  font-size:25px;

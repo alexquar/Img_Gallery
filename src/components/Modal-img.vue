@@ -58,8 +58,8 @@ export default {
   }
   .backdrop img{
     display: block;
-    max-width: 60%;
-    max-height: 80%;
+    max-width: 60dvw;
+    max-height: 80dvh;
     margin: 60px auto;
     margin-bottom: 0px;
     margin-top:5dvh;
