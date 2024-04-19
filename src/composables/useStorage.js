@@ -22,9 +22,10 @@ const useStorage = (file, caption) => {
     async () => {
       // get the dl url & make firestore doc
       const dlUrl = await storageRef.getDownloadURL()
+      const path = storageRef.fullPath
       const createdAt = timestamp()
-      console.log(user)
-      await collectionRef.add({url: dlUrl, createdAt, uid:user.value.uid, displayName:user.value.displayName, caption})
+      console.log(path)
+      await collectionRef.add({url: dlUrl, createdAt, uid:user.value.uid, displayName:user.value.displayName, caption, path})
       url.value = dlUrl
     })
   })

@@ -4,7 +4,7 @@
       v-for="img in documents" 
       :key="img.id" 
       class="img-wrap"
-      @click="handleClick(img.url, img.uid, img.displayName, img.caption, img.createdAt, img.id)"
+      @click="handleClick(img.url, img.uid, img.displayName, img.caption, img.createdAt, img.id, img.path)"
     >
       <img :src="img.url" />
     </div>

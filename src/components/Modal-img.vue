@@ -27,7 +27,7 @@ import useDocument from '@/composables/useDocument'
 import { formatDistanceToNow } from 'date-fns'
 import getUser from '@/composables/getUser'
 export default {
-  props: ['imgUrl','user','id', "caption", 'date', 'docId'],
+  props: ['imgUrl','user','id', "caption", 'date', 'docId', 'path'],
   setup(props, context) {
     const {user:person} = getUser()
   
@@ -38,8 +38,8 @@ export default {
     }
   const handleDelete = () => {
     deleteDoc()
-    deleteImage(props.imgUrl)
-    
+    deleteImage(props.path)
+
   }
     return { handleClick, formatDistanceToNow, person, handleDelete, isPending}
   }
