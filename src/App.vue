@@ -2,7 +2,9 @@
   <div class="App">
     <HeaderTitle />
     <router-view />
+    <div class="webfooter">
     <PageFooter />
+  </div>
   </div>
 </template>
 
@@ -17,3 +19,10 @@ export default {
   },
   }
 </script>
+<style>
+.web-footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+</style>

@@ -3,7 +3,7 @@
       <div v-if="userdoc && userdoc[0]">
       <h1 class="title">{{ userdoc[0].displayName }}'s Pictures</h1>
       <div class="container">
-    <h3> Joined: {{ formatDistanceToNow(userdoc[0].createdAt.toDate()) }}</h3>
+    <h3> Joined: {{ formatDistanceToNow(userdoc[0].createdAt.toDate()) }} ago</h3>
       <h3 v-if="documents">Number of Posts: {{ documents.length }}</h3>
     </div>
       <ImageGrid @selected="updateSelectedImgUrl"  :documents="documents"/>
