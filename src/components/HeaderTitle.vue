@@ -6,6 +6,7 @@
       <div v-if="user" class="container bottom">
       <p> Hey, {{ user.displayName }}!</p>
       <button class="btn" id="logout" @click="handleSubmit"> Logout </button>
+      <button class="btn"  @click="handleMyPage"> My Page </button>
     </div>
     <div v-else class="container bottom">
       <button class="btn"> <router-link :to="{ name: 'LoginApp' }">Login</router-link></button>
@@ -21,14 +22,19 @@
   import useLogout from '../composables/useLogout'
   export default {
     setup(){
+      const {user} = getUser()
+      console.log('user',user)
       const router = useRouter()
       const { logout } = useLogout()
        const handleSubmit = async () => {
         await logout()
         router.push({name:'LoginApp'})
         }
-        const {user} = getUser()
-        return { handleSubmit, user}
+        
+        const handleMyPage = () => {
+          router.push({ name: 'UserPage', params: { id: user.value.uid } })
+        }
+        return { handleSubmit, user, handleMyPage}
     }
   }
   </script>
