@@ -6,7 +6,7 @@ rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
     match /images/{allPaths=**} {
-      allow read, create, delete: if true;
+      allow read, create, delete: if request.auth!=null;
     }
   }
 }

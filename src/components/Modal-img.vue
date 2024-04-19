@@ -6,7 +6,7 @@
         <div class=" caption">
       <h3>Posted by: {{ user }}</h3>
       <h3>Caption: {{caption}}</h3>
-      <h3 v-if="date">Posted: {{ formatDistanceToNow(date.toDate())}}</h3>
+      <h3 v-if="date">Posted: {{ formatDistanceToNow(date.toDate())}} ago</h3>
     </div>
     <Teleport to='#modal'>
     <div class='delete'>
