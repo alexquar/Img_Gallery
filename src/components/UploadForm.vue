@@ -17,7 +17,7 @@
       <div class="output">
         <div v-if="fileError" class="error">{{ fileError }}</div>
         <div v-if="file">{{ file.name }}</div>
-        <ProgressBar v-if="file" :caption="caption" :file="file" @complete="file,caption = null, null" />
+        <ProgressBar v-if="file" :caption="caption" :file="file" @complete="handleComplete" />
       </div>
     </form>
   </div>
@@ -49,8 +49,13 @@
           fileError.value = 'Please select an image file (png or jpg)'
         }
       }
+      const handleComplete = () => {
+        file.value = null
+        caption.value = null
+        console.log(file, caption)
+      }
   
-      return { file, fileError, handleChange, caption }
+      return { file, fileError, handleChange, caption, handleComplete }
     }
   }
   </script>

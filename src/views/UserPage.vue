@@ -34,6 +34,8 @@ export default {
     props: ['id'],
     setup (props) {
         const {error:err, document} = getDocument('users', props.id)
+        setTimeout(()=> console.log(document.id), 1000)
+      //no longer displaying stuf :((()))
         const imageErr = ref(null)
         const {documents, error} = useCollectionQuery('images', ['uid','==',props.id], ['createdAt', 'asc'])
     const selectedImgUrl = ref(null)
@@ -46,7 +48,6 @@ export default {
         selectedId.value=id
         selectedCaption.value=caption
       }
-      console.log(document.value)
       return { selectedImgUrl, updateSelectedImgUrl, selectedId, selectedUser, selectedCaption, documents, error, imageErr, document }
     }
 }
