@@ -9,6 +9,7 @@
         :user="selectedUser"
         :id="selectedId"
         :caption="selectedCaption"
+        :date = "selectedDate"
         @close="updateSelectedImgUrl" 
       />
       <div v-if="error" class="error">{{ error }}</div>
@@ -39,13 +40,15 @@ export default {
       const selectedUser = ref(null)
       const selectedId = ref(null)
       const selectedCaption=ref(null)
-      const updateSelectedImgUrl = (url, id, user, caption) => {
+      const selectedDate = ref(null)
+      const updateSelectedImgUrl = (url, id, user, caption, date) => {
         selectedImgUrl.value = url
         selectedUser.value = user
         selectedId.value=id
         selectedCaption.value=caption
+        selectedDate.value = date
       }
-      return { selectedImgUrl, updateSelectedImgUrl, selectedId, selectedUser, selectedCaption, documents, error, imageErr, userdoc }
+      return { selectedImgUrl, updateSelectedImgUrl, selectedId, selectedUser, selectedCaption, documents, error, imageErr, userdoc, selectedDate }
     }
 }
 </script>
