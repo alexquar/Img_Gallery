@@ -72,4 +72,7 @@
     .bottom{
       margin-bottom:40px
     }
+    button{
+      margin:0px 10px;
+    }
   </style>

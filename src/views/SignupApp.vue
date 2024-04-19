@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="handleSubmit" class="container-col">
-      <h3>Sign up</h3>
+      <h3 class="subtitle">Sign up</h3>
       <div>
       <input type="text" required placeholder="Display name" v-model="displayName">
     </div>
@@ -63,5 +63,9 @@ form{
   
   outline-color: #786d9a;
   }
+  }
+  .subtitle{
+ color: #786d9a;
+ font-size:25px;
   }
 </style>

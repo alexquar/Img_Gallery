@@ -8,6 +8,9 @@
       <h3>Caption: {{caption}}</h3>
       <h3 v-if="date">Posted: {{ formatDistanceToNow(date.toDate())}}</h3>
     </div>
+    <div v-if="person.uid == id" class="container">
+    <button class="btn">Delete Post</button>
+  </div>
     </div>
     </transition>
   </div>
@@ -15,18 +18,20 @@
 
 <script>
 import { formatDistanceToNow } from 'date-fns'
+import getUser from '@/composables/getUser'
 export default {
   props: ['imgUrl','user','id', "caption", 'date'],
   setup(props, context) {
+    const {user:person} = getUser()
     const handleClick = () => {
       context.emit('close', null)
     }
-    return { handleClick, formatDistanceToNow }
+    return { handleClick, formatDistanceToNow, person }
   }
 }
 </script>
 
-<style>
+<style scoped>
   .backdrop{
     position: fixed;
     top: 0;
@@ -67,9 +72,13 @@ export default {
     display: flex;
       justify-content: space-between;
       align-items:center;
+      margin-bottom: 10px;
     p, h3{
       margin-left: 10px;
       margin-right:10px;
     }
+  }
+  button{
+    box-shadow: 3px 5px 7px rgba(0,0,0,0.5);
   }
 </style>

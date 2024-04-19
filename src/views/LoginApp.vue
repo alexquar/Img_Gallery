@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="handleSubmit" class="container-col">
-      <h3>Login</h3>
+      <h3 class="subtitle">Login</h3>
       <div>
       <input required type="email" placeholder="Email" v-model="email">
     </div>
@@ -55,5 +55,9 @@
   
   outline-color: #786d9a;
   }
+  }
+  .subtitle{
+ color: #786d9a;
+ font-size:25px;
   }
 </style>
