@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router'
 import useEditStorage from '@/composables/useEditStorage'
 import useDocument from '@/composables/useDocument'
 import { formatDistanceToNow } from 'date-fns'
@@ -30,7 +31,7 @@ export default {
   props: ['imgUrl','user','id', "caption", 'date', 'docId', 'path'],
   setup(props, context) {
     const {user:person} = getUser()
-  
+    const router = useRouter()
   const  {isPending, deleteDoc} = useDocument('images', props.docId)
   const {deleteImage} = useEditStorage()
     const handleClick = () => {
@@ -39,7 +40,7 @@ export default {
   const handleDelete = () => {
     deleteDoc()
     deleteImage(props.path)
-
+    handleClick()
   }
     return { handleClick, formatDistanceToNow, person, handleDelete, isPending}
   }
