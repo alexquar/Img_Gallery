@@ -2,6 +2,10 @@
     <div  class="App">
       <div v-if="userdoc && userdoc[0]">
       <h1 class="title">{{ userdoc[0].displayName }}'s Pictures</h1>
+      <div class="container">
+    <h3> Joined: {{ formatDistanceToNow(userdoc[0].createdAt.toDate()) }}</h3>
+      <h3 v-if="documents">Number of Posts: {{ documents.length }}</h3>
+    </div>
       <ImageGrid @selected="updateSelectedImgUrl"  :documents="documents"/>
       <Modal
         v-if="selectedImgUrl" 
@@ -22,6 +26,7 @@
 </template>
 
 <script>
+import { formatDistanceToNow } from 'date-fns'
 import ImageGrid from '../components/ImageGrid.vue'
 import Modal from '../components/Modal-img.vue'
 import useCollectionQuery from "../composables/useCollectionQuery"
@@ -48,7 +53,9 @@ export default {
         selectedCaption.value=caption
         selectedDate.value = date
       }
-      return { selectedImgUrl, updateSelectedImgUrl, selectedId, selectedUser, selectedCaption, documents, error, imageErr, userdoc, selectedDate }
+    
+    
+      return { selectedImgUrl, updateSelectedImgUrl, selectedId, selectedUser, selectedCaption, documents, error, imageErr, userdoc, selectedDate, formatDistanceToNow }
     }
 }
 </script>
@@ -57,5 +64,9 @@ export default {
   .App{
     padding-left:20px;
     padding-right: 20px;
+  }
+  h3{
+    color:#786d9a;
+    margin:30px 30px;
   }
 </style>
