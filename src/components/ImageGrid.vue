@@ -31,6 +31,7 @@ export default {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 40px;
+    margin-bottom:100px;
   }
   .img-wrap{
     overflow: hidden;
